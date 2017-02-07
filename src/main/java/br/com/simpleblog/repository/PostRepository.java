@@ -21,5 +21,5 @@ public interface PostRepository {
 
 	public Post buscaPorId(Long id);
 
-	public List<Post> buscaPorNome(String nome);
+	public List<Post> buscaPorTitulo(String titulo);
 }

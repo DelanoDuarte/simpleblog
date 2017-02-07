@@ -32,7 +32,16 @@ public class PostRepositoryImpl implements PostRepository {
 
 	@Override
 	public void salvar(Post post) {
+		try {
+			if (post.getId() == null) {
+				em.persist(post);
+			} else {
+				em.merge(post);
+			}
 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	/*
@@ -44,7 +53,12 @@ public class PostRepositoryImpl implements PostRepository {
 	 */
 	@Override
 	public void remover(Post post) {
-
+		try {
+			Post postTemp = em.find(Post.class, post.getId());
+			em.remove(postTemp);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	/*
@@ -52,9 +66,14 @@ public class PostRepositoryImpl implements PostRepository {
 	 * 
 	 * @see br.com.simpleblog.repository.PostRepository#buscarTodos()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Post> buscarTodos() {
-		// TODO Auto-generated method stub
+		try {
+			return em.createQuery("from Post p").getResultList();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
@@ -66,8 +85,11 @@ public class PostRepositoryImpl implements PostRepository {
 	 */
 	@Override
 	public Post buscaPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return em.find(Post.class, id);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	/*
@@ -76,10 +98,15 @@ public class PostRepositoryImpl implements PostRepository {
 	 * @see br.com.simpleblog.repository.PostRepository#buscaPorNome(java.lang.
 	 * String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Post> buscaPorNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> buscaPorTitulo(String titulo) {
+		try {
+			return em.createQuery("from Post p where p.titulo = :titulo").setParameter(titulo, "titulo")
+					.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

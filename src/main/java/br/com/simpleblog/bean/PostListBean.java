@@ -4,6 +4,7 @@
 package br.com.simpleblog.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
@@ -16,29 +17,26 @@ import br.com.simpleblog.repository.PostRepository;
  *
  */
 @Model
-public class PostBean implements Serializable {
+public class PostListBean implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Post post = new Post();
+	private List<Post> posts = null;
 
 	@Inject
 	private PostRepository postRepository;
 
-	public String salvar() {
-		postRepository.salvar(post);
-		return "";
+	public List<Post> getPosts() {
+		if (this.posts == null)
+			this.posts = postRepository.buscarTodos();
+		return posts;
 	}
 
-	public Post getPost() {
-		return post;
-	}
-
-	public void setPost(Post post) {
-		this.post = post;
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 }

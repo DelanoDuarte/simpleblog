@@ -32,6 +32,9 @@ public class Post implements Serializable {
 	private Long id;
 
 	@Column
+	private String titulo;
+
+	@Column
 	private String texto;
 
 	@Column
@@ -41,8 +44,9 @@ public class Post implements Serializable {
 		super();
 	}
 
-	public Post(String texto, Date dataPublicacao) {
+	public Post(String titulo, String texto, Date dataPublicacao) {
 		super();
+		this.titulo = titulo;
 		this.texto = texto;
 		this.dataPublicacao = dataPublicacao;
 	}
@@ -53,6 +57,14 @@ public class Post implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getTexto() {
@@ -78,6 +90,7 @@ public class Post implements Serializable {
 		result = prime * result + ((dataPublicacao == null) ? 0 : dataPublicacao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((texto == null) ? 0 : texto.hashCode());
+		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
 
@@ -105,12 +118,18 @@ public class Post implements Serializable {
 				return false;
 		} else if (!texto.equals(other.texto))
 			return false;
+		if (titulo == null) {
+			if (other.titulo != null)
+				return false;
+		} else if (!titulo.equals(other.titulo))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", texto=" + texto + ", dataPublicacao=" + dataPublicacao + "]";
+		return "Post [id=" + id + ", titulo=" + titulo + ", texto=" + texto + ", dataPublicacao=" + dataPublicacao
+				+ "]";
 	}
 
 }
