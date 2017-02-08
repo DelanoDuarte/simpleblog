@@ -8,6 +8,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import br.com.simpleblog.domain.Post;
 import br.com.simpleblog.repository.PostRepository;
@@ -17,6 +18,7 @@ import br.com.simpleblog.repository.PostRepository;
  *
  */
 @RequestScoped
+@Transactional
 public class PostRepositoryImpl implements PostRepository {
 
 	/*
@@ -40,7 +42,7 @@ public class PostRepositoryImpl implements PostRepository {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 	}
 
@@ -57,7 +59,7 @@ public class PostRepositoryImpl implements PostRepository {
 			Post postTemp = em.find(Post.class, post.getId());
 			em.remove(postTemp);
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 	}
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="conteudo">
+
+
+		<h:form>
+
+			<b:well>
+				<h3>Lista de Posts</h3>
+			</b:well>
+
+
+			<b:dataTable value="#{postListBean.posts}" var="_post">
+				<b:dataTableColumn value="#{_post.titulo}" />
+				<b:dataTableColumn value="#{_post.dataPublicacao}" />
+
+				<b:dataTableColumn value="">
+					<b:button value="Ver"
+						outcome="/paginas/administrativo/gerenciamento/posts/view">
+						<f:param name="postId" value="#{_post.id}" />
+					</b:button>
+				</b:dataTableColumn>
+
+			</b:dataTable>
+
+			<br />
+
+			<b:button value="Novo Post"
+				outcome="/paginas/administrativo/gerenciamento/posts/novo"
+				look="primary" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

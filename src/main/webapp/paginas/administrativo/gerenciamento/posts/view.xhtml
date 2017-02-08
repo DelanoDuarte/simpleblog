@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form>
+
+			<f:metadata>
+				<f:viewParam name="postId" value="#{postBean.post.id}" />
+				<f:event listener="#{postBean.buscarPostPorId()}"
+					type="preRenderView" />
+
+			</f:metadata>
+
+			<b:panel title="Visualizando Post" look="primary">
+
+				<h:panelGrid columns="2">
+
+					<h3>Titulo:</h3>
+					<h4>#{postBean.post.titulo}</h4>
+
+
+				</h:panelGrid>
+
+				<br />
+
+				<h:outputLabel value="Conteudo do Post:" />
+				<p:editor value="#{postBean.post.texto}" disabled="true">
+
+				</p:editor>
+
+				<br />
+
+			</b:panel>
+
+			<br />
+
+			<b:button value="Voltar"
+				outcome="/paginas/administrativo/gerenciamento/posts/list"
+				look="danger" />
+
+
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>

@@ -30,6 +30,15 @@ public class PostBean implements Serializable {
 
 	public String salvar() {
 		postRepository.salvar(post);
+		return "/paginas/administrativo/gerenciamento/posts/list";
+	}
+
+	public void buscarPostPorId() {
+		this.post = postRepository.buscaPorId(this.post.getId());
+	}
+
+	public String removerPost() {
+		postRepository.remover(post);
 		return "";
 	}
 
