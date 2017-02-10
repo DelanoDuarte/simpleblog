@@ -8,6 +8,7 @@ import java.io.Serializable;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
+import br.com.simpleblog.business.PostBusiness;
 import br.com.simpleblog.domain.Post;
 import br.com.simpleblog.repository.PostRepository;
 
@@ -28,8 +29,11 @@ public class PostBean implements Serializable {
 	@Inject
 	private PostRepository postRepository;
 
+	@Inject
+	private PostBusiness postBusiness;
+
 	public String salvar() {
-		postRepository.salvar(post);
+		postBusiness.salvarPost(post);
 		return "/paginas/administrativo/gerenciamento/posts/list";
 	}
 

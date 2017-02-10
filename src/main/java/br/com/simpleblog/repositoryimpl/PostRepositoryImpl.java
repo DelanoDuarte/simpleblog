@@ -18,7 +18,6 @@ import br.com.simpleblog.repository.PostRepository;
  *
  */
 @RequestScoped
-@Transactional
 public class PostRepositoryImpl implements PostRepository {
 
 	/*
@@ -32,6 +31,7 @@ public class PostRepositoryImpl implements PostRepository {
 	@Inject
 	private EntityManager em;
 
+	@Transactional
 	@Override
 	public void salvar(Post post) {
 		try {
@@ -53,6 +53,7 @@ public class PostRepositoryImpl implements PostRepository {
 	 * br.com.simpleblog.repository.PostRepository#remover(br.com.simpleblog.
 	 * domain.Post)
 	 */
+	@Transactional
 	@Override
 	public void remover(Post post) {
 		try {

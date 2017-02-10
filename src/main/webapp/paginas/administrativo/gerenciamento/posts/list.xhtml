@@ -18,11 +18,13 @@
 
 			<b:dataTable value="#{postListBean.posts}" var="_post">
 				<b:dataTableColumn value="#{_post.titulo}" />
-				<b:dataTableColumn value="#{_post.dataPublicacao}" />
+				<b:dataTableColumn value="#{_post.dataPublicacao}">
+				</b:dataTableColumn>
 
-				<b:dataTableColumn value="">
+				<b:dataTableColumn>
 					<b:button value="Ver"
-						outcome="/paginas/administrativo/gerenciamento/posts/view">
+						outcome="/paginas/administrativo/gerenciamento/posts/view"
+						look="success">
 						<f:param name="postId" value="#{_post.id}" />
 					</b:button>
 				</b:dataTableColumn>

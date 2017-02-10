@@ -30,18 +30,15 @@
 	<b:container fluid="true">
 		<b:row>
 			<b:column col-sm="3" col-md="2" styleClass="sidebar">
-				<b:listLinks>
-					<b:navLink header="Ultimos Posts" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="One more nav" />
-					<b:navLink value="Another nav item" />
-				</b:listLinks>
+				<p:dataList value="#{postListBean.posts}" var="_post" type="ordered">
+
+					<f:facet name="header">
+					Ultimos Posts
+					</f:facet>
+					Titulo: #{_post.titulo}
+					
+				</p:dataList>
+
 			</b:column>
 		</b:row>
 

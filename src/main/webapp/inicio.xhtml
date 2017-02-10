@@ -11,6 +11,34 @@
 			<h3>Inicio Blog</h3>
 		</b:well>
 
+
+		<h:form>
+			<p:dataScroller value="#{postListBean.posts}" var="_post"
+				chunkSize="10" mode="inline" scrollHeight="500">
+				<f:facet name="header">
+            Posts
+        </f:facet>
+				<b:panel look="primary" title="#{_post.titulo}">
+					<h:panelGrid columns="2" style="width:100%"
+						columnClasses="logo,detail">
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<h:outputText value="Texto:" />
+								<h:outputText value="#{_post.texto}" style="font-weight: bold" />
+
+							</h:panelGrid>
+						</p:outputPanel>
+					</h:panelGrid>
+					<div align="right">
+						<b:button value="Ver Post" look="success">
+							<f:param name="postId" value="#{_post.id}" />
+						</b:button>
+					</div>
+				</b:panel>
+			</p:dataScroller>
+		</h:form>
 	</ui:define>
 
 
