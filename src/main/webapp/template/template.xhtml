@@ -30,12 +30,12 @@
 	<b:container fluid="true">
 		<b:row>
 			<b:column col-sm="3" col-md="2" styleClass="sidebar">
-				<p:dataList value="#{postListBean.posts}" var="_post" type="ordered">
+				<p:dataList value="#{postBean.posts}" var="_post" type="ordered">
 
 					<f:facet name="header">
 					Ultimos Posts
 					</f:facet>
-					Titulo: #{_post.titulo}
+					Titulo: #{_post.titulo}F
 					
 				</p:dataList>
 
